@@ -18,6 +18,4 @@ if In_Path != '':
         st.text('commnig soon!')
         qr_img = qr_img = qr.make('XD')
         st.image(qr_img.get_image())
-    Subm_Button = st.button('Download')
-    if Subm_Button:
-        qr_img.save('QR.png')
+    st.download_button('Download', qr_img.get_image(), 'QRCode.png', 'image/png')
