@@ -4,6 +4,7 @@ import qrcode as qr
 from io import BytesIO
 
 # UI
+st.set_page_config(page_title="QR Code Generator", layout="centered")
 st.title("🥰QR Code Generator")
 st.balloons()
 In_Path = st.text_input("**Path:**")
