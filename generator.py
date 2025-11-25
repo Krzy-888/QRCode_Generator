@@ -19,19 +19,23 @@ if In_Path != '':
     if GenType == 'Regular':
         st.text('ta-daaa!')
         qr_img = qr.make(In_Path)
-        st.image(qr_img.get_image())
 
     # QR Code with custom colors
-    if GenType == 'Custom Colors🎨':
+    if GenType == 'Custom Colors 🎨':
+        qr_class = qr.QRCode(version=1, box_size=10, border=4)
         Code_Color = st.color_picker("Code Color:","#000000")
         Backg_Color = st.color_picker("Background Color:","#FFFFFF")
+        qr_class.add_data(In_Path)
+        qr_img = qr_class.make_image(fill_color=Code_Color, back_color=Backg_Color)
 
     # Advanced QR generator
     else:
         st.text('commnig soon!')
         qr_img = qr.make('XD')
-        st.image(qr_img.get_image())
-    
+
+    # Image Visualization
+    st.image(qr_img.get_image())
+
     # Image saving
     img = qr_img.get_image().save(mem_buf, format="PNG")
     byte_im = mem_buf.getvalue()
