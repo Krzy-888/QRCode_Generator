@@ -20,10 +20,12 @@ if In_Path != '':
         st.text('ta-daaa!')
         qr_img = qr.make(In_Path)
         st.image(qr_img.get_image())
+
     # QR Code with custom colors
     if GenType == 'Custom Colors🎨':
         Code_Color = st.color_picker("Code Color:","#000000")
         Backg_Color = st.color_picker("Background Color:","#FFFFFF")
+
     # Advanced QR generator
     else:
         st.text('commnig soon!')
