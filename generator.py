@@ -22,10 +22,11 @@ if In_Path != '':
 
     # QR Code with custom colors
     if GenType == 'Custom Colors 🎨':
-        qr_img = qr.QRCode(version=1, box_size=10, border=4)
+        qr_class = qr.QRCode(version=1, box_size=10, border=4)
         Code_Color = st.color_picker("Code Color:","#000000")
         Backg_Color = st.color_picker("Background Color:","#FFFFFF")
-        qr_img = 
+        qr_class.add_data(In_Path)
+        qr_img = qr_class.make_image(fill_color=Code_Color, back_color=Backg_Color)
 
     # Advanced QR generator
     else:
