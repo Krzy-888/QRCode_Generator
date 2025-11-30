@@ -42,13 +42,16 @@ if In_Path != '':
             Backg_Color = st.color_picker("Background Color:","#FFFFFF")
         with col3:
             Image_path = st.file_uploader("Add Image:")
-            Logo_img = Image.open(Image_path).resize((75,75), Image.LANCZOS)
+            
             qr_class.add_data(In_Path)
             qr_img = qr_class.make_image(fill_color=Code_Color, back_color=Backg_Color)
             offset = ((qr_img.size[0] - 75) // 2, (qr_img.size[1] - 75) // 2)
-            qr_img.paste(Logo_img, offset, mask=Logo_img.split()[3] if Logo_img.mode == 'RGBA' else None)
+            
         if Image_path is None:
             st.text('Waiting for Image! ⌛')
+        else:
+            Logo_img = Image.open(Image_path).resize((75,75), Image.LANCZOS)
+            qr_img.paste(Logo_img, offset, mask=Logo_img.split()[3] if Logo_img.mode == 'RGBA' else None)
 
     # Advanced QR generator
     else:
