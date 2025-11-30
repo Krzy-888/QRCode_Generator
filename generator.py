@@ -42,33 +42,25 @@ if In_Path != '':
             Backg_Color = st.color_picker("Background Color:","#FFFFFF")
         with col3:
             Image_path = st.file_uploader("Add Image:")
-        if Image_path is not None:
             Logo_img = Image.open(Image_path).resize((75,75), Image.LANCZOS)
             qr_class.add_data(In_Path)
             qr_img = qr_class.make_image(fill_color=Code_Color, back_color=Backg_Color)
             offset = ((qr_img.size[0] - 75) // 2, (qr_img.size[1] - 75) // 2)
             qr_img.paste(Logo_img, offset, mask=Logo_img.split()[3] if Logo_img.mode == 'RGBA' else None)
-            # Image Visualization
-            st.image(qr_img.get_image())
-
-            # Image saving
-            img = qr_img.get_image().save(mem_buf, format="PNG")
-            byte_im = mem_buf.getvalue()
-            st.download_button('Download', byte_im, 'QRCode.png', 'image/png')
-        else:
+        if Image_path is None:
             st.text('Waiting for Image! ⌛')
 
     # Advanced QR generator
     else:
         st.text('commnig soon!')
         qr_img = qr.make('XD')
-
+    # Generate Button
+    Generate = st.button("Generate")
+    if Generate:
     # Image Visualization
-    if GenType != 'Custom Colors + Logo 🖼️':
         st.image(qr_img.get_image())
 
     # Image saving
-    if GenType != 'Custom Colors + Logo 🖼️':
         img = qr_img.get_image().save(mem_buf, format="PNG")
         byte_im = mem_buf.getvalue()
         st.download_button('Download', byte_im, 'QRCode.png', 'image/png')
