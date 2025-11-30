@@ -7,7 +7,6 @@ from PIL import Image
 # UI
 st.set_page_config(page_title="QR Code Generator", layout="centered")
 st.title("🥰QR Code Generator")
-st.balloons()
 In_Path = st.text_input("**Path:**")
 Options = ['Regular', 'Custom Colors 🎨','Custom Colors + Logo 🖼️','Modified😱']
 GenType = st.selectbox("**Select type:**",Options)
@@ -60,6 +59,8 @@ if In_Path != '':
     # Generate Button
     Generate = st.button("Generate")
     if Generate:
+    # Balloons
+        st.balloons()
     # Image Visualization
         st.image(qr_img.get_image())
 
